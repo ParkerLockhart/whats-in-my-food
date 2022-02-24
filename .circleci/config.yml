@@ -29,13 +29,12 @@ jobs:
       - run: 
           name: "Which bundler?"
           command: |
-            - bundle -v
-            - ruby/bundle-install
+            gem install bundler 
+            bundle install --jobs 4 --retry 3 
       - run: 
           name: "Set up DB"
           command: |
-            bundle exec rake db:create
-            bundle exec rake db:migrate 
+            bundle exec rails db:setup 
       - ruby/rspec-test: 
           label: RSpec Tests 
           include: spec/**/*_spec.rb
