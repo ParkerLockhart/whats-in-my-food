@@ -13,11 +13,12 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
       - image: cimg/ruby:2.7.2-node
-        environment: 
-          PGHOST: localhost
-          RAILS_ENV: test
-      - image: cimg/postgres:14.1
-    executor: ruby/default
+    #     environment: 
+    #       PGHOST: localhost
+    #       PGUSER: 
+    #       RAILS_ENV: test
+    #   - image: cimg/postgres:14.1
+    # executor: ruby/default
 
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
@@ -31,10 +32,10 @@ jobs:
           command: |
             gem install bundler 
             bundle install --jobs 4 --retry 3 
-      - run: 
-          name: "Set up DB"
-          command: |
-            bundle exec rails db:setup 
+      # - run: 
+      #     name: "Set up DB"
+      #     command: |
+      #       bundle exec rails db:setup 
       - ruby/rspec-test: 
           label: RSpec Tests 
           include: spec/**/*_spec.rb
