@@ -17,7 +17,7 @@ jobs:
           PGHOST: localhost
           PGUSER: root
           RAILS_ENV: test
-      - image: circleci/postgres:14.1
+      - image: cimg/postgres:14.1
     executor: ruby/default
 
     # Add steps to the job
