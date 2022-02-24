@@ -15,7 +15,6 @@ jobs:
       - image: cimg/ruby:2.7.2-node
         environment: 
           PGHOST: localhost
-          PGUSER: whats_in_my_food
           RAILS_ENV: test
       - image: cimg/postgres:14.1
     executor: ruby/default
